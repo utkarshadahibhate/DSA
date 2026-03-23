@@ -18,7 +18,6 @@ class Node{
     Node *prev;
     int data;
     Node *next;
-    int pos;
 
     //constructor
     Node(int data){
@@ -42,30 +41,55 @@ class Node{
         Node *new_node = new Node(data);
 
         //1st condition: insertion at the beginnning
-        //to check if list is empty or not and pos = 1
-        if(head != NULL and pos == 1){
+        if(pos == 1){
             new_node->next = head;
-            head->prev = new_node;
+
+            //within this if the linked list is not empty
+            //set the previous of the head node to new_node
+            if(head != NULL){
+                head->prev = new_node;
+            }
+            //set the new node as the head of the linked list
+            head = new_node;
+            //return the updated head
             return head;
         }
 
         //2nd condition: insertion at a specific position
+        Node *curr = head;
         if(pos > count_nodes(head)){
             cout<<"Invalid position!, nodes out of bound"<<endl;
         }
         else{
-            Node *curr = head;
-            for(int i = 1; i < pos-1; i++){
-                curr->next = curr;
+            for(int i = 1; i < pos-1 && curr != NULL; i++){
+                curr = curr->next; //one position ahead of the pos
             }
-            //update current pointers
-            curr->next = new_node;
-            curr->next->prev = new_node;
 
-            //assign new_node pointers
-            new_node->next = curr->next;
+            //if the position is out of bounds
+            if(curr == NULL){
+                delete new_node;
+                return head;
+            }
+
+            //updating new_node pointers
+            //set the previous of new node to curr
             new_node->prev = curr;
 
+            //set next of new node to next of curr
+            new_node->next = curr->next;
+
+            //Updating current node pointer
+            //Update the next of current node to new node
+            curr->next = new_node;
+
+            //Updating new_node's next node pointer
+            //if the new_node is not the last node
+            //update prev of next node to new node
+            if(new_node->next != NULL){
+                new_node->next->prev = new_node;
+            }
+
+            //return the updated head
             return head;
         }
 
@@ -102,10 +126,10 @@ class Node{
 
 int main(){
     //creating an empty node
-    Node *head = NULL;
+    //Node *head = NULL;
 
     //1st Node
-    head = new Node(11);
+    Node *head = new Node(11);
 
     //2nd Node
     head->next = new Node(22);
@@ -125,7 +149,10 @@ int main(){
 
     //Position = 1
     //cout<<"for Position = 1"<<endl;
-    head->insert_at_position(head, 99, 1);
+    head = head->insert_at_position(head, 99, 1);
+    head = head->insert_at_position(head, 88, 6);
+    head = head->insert_at_position(head, 111, 6);
+
 
     //to display list
     head->display(head);
