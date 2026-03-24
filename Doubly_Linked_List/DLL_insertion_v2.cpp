@@ -29,6 +29,7 @@ class Node{
         //to check if list is empty
         if(head == NULL){
             head = new_node;
+            return head;
         }
         else{
             //traverse the list
@@ -88,7 +89,7 @@ head->next->next->next->next = new Node(50);
 head->next->next->next->next->prev = head->next->next->next;
 
 //adding element
-head = head->insert_at_end(head, 100);
+head = head->insert_at_end(head, 180);
 
 //to display DLL
 head->display(head);

@@ -62,7 +62,7 @@ class Node{
         }
         else{
             for(int i = 1; i < pos-1 && curr != NULL; i++){
-                curr = curr->next; //one position ahead of the pos
+                curr = curr->next; //one position behind of the actual position
             }
 
             //if the position is out of bounds
