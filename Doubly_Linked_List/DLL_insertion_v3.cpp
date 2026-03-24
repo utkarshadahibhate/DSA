@@ -96,7 +96,7 @@ class Node{
         //3rd condition: insertion at the end
         Node *last_node = head;
         while(last_node->next != NULL){
-            last_node->next = last_node;
+            last_node = last_node->next;
         }
         //assign last node next to new_node
         last_node->next = new_node;
