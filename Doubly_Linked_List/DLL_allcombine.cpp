@@ -184,7 +184,7 @@ Node* Node :: delete_at_pos(Node *head, int pos){
 
     if(pos == 1){
         head = head->next;
-        if(head->next != NULL){
+        if(head->prev != NULL){
             head->prev = NULL;
         }
     }
@@ -193,7 +193,6 @@ Node* Node :: delete_at_pos(Node *head, int pos){
 
     if(pos > count_nodes(head)){
         cout<<"\nInvalid position, nodes out of bounds !"<<endl;
-        cout<<"try again !"<<endl;
         return head;
     }
     else{
