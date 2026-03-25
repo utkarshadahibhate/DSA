@@ -79,8 +79,9 @@ Node* Node :: insert_at_end(Node *head, int data){
         while(last_node->next != NULL){
             last_node = last_node->next;
         }
+        //update last node pointers
         last_node->next = new_node;
-
+        //update new_node pointers
         new_node->prev = last_node;
 
         return head;
@@ -130,14 +131,91 @@ Node* Node :: insert_at_pos(Node *head, int data, int pos){
 }
 
 //Deletion operations
-//1)Insertion at the beginning
-Node* Node :: delete_at_start(Node *head){}
+//1)Deletion at the beginning
+Node* Node :: delete_at_start(Node *head){
+    Node *temp = head;
 
-//2)Insertion at the end
-Node* Node :: delete_at_end(Node *head){}
+    if(head == NULL){
+        return head;
+    }
 
-//3)Insert at specific position
-Node* Node :: delete_at_pos(Node *head, int pos){}
+    head = head->next;
+    if(head->next != NULL){
+        head->prev = NULL;
+    }
+
+    delete temp;
+    return head;
+}
+
+//2)Deletion at the end
+Node* Node :: delete_at_end(Node *head){
+    Node *lastnode = head;
+
+    if(head = NULL){
+        return head;
+    }
+
+    if(head->next == NULL){ //if only head node present
+        delete head;
+        return NULL;
+    }
+    //traverse till last node
+    while(lastnode->next != NULL){
+        lastnode = lastnode->next;
+    }
+    //update second last node pointers
+    lastnode->prev->next = NULL;
+
+    delete lastnode;
+    return head;
+}
+
+//3)Deletion at specific position
+Node* Node :: delete_at_pos(Node *head, int pos){
+    Node *temp = head;
+
+    if(head == NULL){
+        return head;
+    }
+
+    if(pos == 1){
+        head = head->next;
+        if(head->next != NULL){
+            head->prev = NULL;
+        }
+    }
+    delete temp;
+    return head;
+
+    if(pos > count_nodes(head)){
+        cout<<"Invalid position, nodes out of bounds !"<<endl;
+        return head;
+    }
+    else{
+        Node *curr = head;
+        for(int i = 1; i < pos && curr != NULL; i++){
+            curr = curr->next;  //at the position
+        }
+        //if curr is NULL
+        if(curr == NULL){
+            return head;
+        }
+
+        //update the backward pointer
+        if(curr->prev != NULL){
+            curr->prev->next = curr->next;
+        }
+        //update the forward pointer
+        if(curr->next != NULL){
+            curr->next->prev = curr->prev;
+        }
+
+        delete curr;
+        return head;
+    }
+
+}
 
 //to count nodes
 int Node :: count_nodes(Node *head){
@@ -166,4 +244,8 @@ void Node :: display(Node *head){
     }cout<<endl;
 }
 
-int main(){}
+int main(){
+    cout<<"Select a option :"<<endl;
+    cout<<"1)Creating a DLL \n2)Inserting an element \
+    \n3)Deleting an element"<<endl;
+}
