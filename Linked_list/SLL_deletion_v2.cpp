@@ -33,7 +33,7 @@ class Node{
         }
         //find the second last node
         Node *secondlast = head;
-        while(secondlast->next != NULL){
+        while(secondlast->next->next != NULL){
             secondlast = secondlast->next; //assigning address for next node
         }
         //deleting last node
