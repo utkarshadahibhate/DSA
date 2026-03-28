@@ -28,3 +28,115 @@ using namespace std;
         after every insertion.
 */
 
+class Node{
+    public:
+    int data;
+    Node *next;
+
+    //constructor
+    Node(int data){
+        this->data = data;
+        this->next = NULL;
+    }
+
+    //count of nodes
+    int count_nodes(Node *head){
+        Node *temp = head;
+        int count = 0;
+
+        do{
+            count++;
+            temp = temp->next;
+        }while(temp->next != head);
+        
+        return count;
+    }
+
+    Node *insert_at_pos(Node *head, int pos, int data){
+        Node *new_node = new Node(data);
+
+        if(head == NULL){
+            new_node->next = new_node;
+            head = new_node;
+            return head;
+        }
+        
+        //for pos = 1
+        if(pos == 1){
+            Node *last_node = head;
+            while(last_node->next != head){
+                last_node = last_node->next;
+            }
+            last_node->next = new_node;
+            new_node->next = head;
+            head = new_node;
+            return head;
+        }
+
+        //for any specific position
+        Node *current_node = head;
+        if(pos > count_nodes(head)){
+            cout<<"Invalid position, nodes out of bounds!"<<endl;
+            return head;
+        }
+        else{
+            for(int i = 1; i < pos - 1; i++){
+                current_node = current_node->next;
+            }
+            //update new node's pointer
+            new_node->next = current_node->next;
+            //update current node's pointer
+            current_node = new_node;
+
+            //return updated head
+            return head;
+        }
+    }
+
+    //to display the list
+    void display(Node *head){
+        if(head == NULL){
+            return;
+        }
+
+        //take a temp node as head
+        Node *temp = head;
+
+        //first jump to the next node and then loop
+        cout<<"Circular singly linked list elements are :"<<endl;
+        do{
+            cout<<temp->data;
+            temp = temp->next;
+            if(temp != head){
+                cout<<" -> ";
+            }
+        }while(temp != head);
+        cout<<endl;
+    }
+};
+
+int main(){
+    Node *head = new Node(10);
+    head->next = new Node(20);
+    head->next->next = new Node(30);
+    head->next->next->next = new Node(40);
+
+    Node *last = head->next->next->next;
+    last->next = head;
+
+    // cout<<"Enter for position "<<endl;
+    // cin>>pos;
+    // cout<<"give the number : ";
+    // cin>>data;
+    head = head->insert_at_pos(head,5,80);
+    head->display(head);
+
+    head = head->insert_at_pos(head,10,90);
+    head->display(head);
+
+    head = head->insert_at_pos(head,6,100);
+    head->display(head);
+
+    //head = head->insert_at_pos(head,1,90);
+    //head->display(head);
+}
