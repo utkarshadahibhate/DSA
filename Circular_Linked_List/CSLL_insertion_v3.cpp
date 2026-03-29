@@ -128,13 +128,13 @@ int main(){
     // cin>>pos;
     // cout<<"give the number : ";
     // cin>>data;
-    head = head->insert_at_pos(head,5,80);
+    head = head->insert_at_pos(head,2,80);
     head->display(head);
 
-    head = head->insert_at_pos(head,10,90);
+    head = head->insert_at_pos(head,3,90);
     head->display(head);
 
-    head = head->insert_at_pos(head,6,100);
+    head = head->insert_at_pos(head,4,100);
     head->display(head);
 
     //head = head->insert_at_pos(head,1,90);
