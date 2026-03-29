@@ -8,12 +8,24 @@ class Node{
     Node *next;
 
     //constructor
-    Node(int data){
+    Node(int data);
+
+    //insertion operation
+    Node *insert_at_head(Node *tail, int data);
+    Node *insert_at_tail(Node *tail, int data);
+    Node *insert_at_pos(Node *tail, int pos, int data);
+
+    //to display the list
+    void display(Node *tail);
+
+};
+
+Node::Node(int data){
         this->data = data;
         this->next = NULL;
     }
 
-    Node *insert_at_head(Node *tail, int data){
+Node* Node :: insert_at_head(Node *tail, int data){
         //first create a new node
         Node *new_node = new Node(data);
 
@@ -34,8 +46,7 @@ class Node{
         }
     }
 
-    //insert at tail
-    Node *insert_at_tail(Node *tail, int data){
+Node* Node :: insert_at_tail(Node *tail, int data){
         //create a new node
         Node *new_node = new Node(data);
 
@@ -59,14 +70,12 @@ class Node{
 
             //now the new tail is new node
             tail = new_node;
-
-            //return the updated tail
-            return tail;
         }
+        return tail;
     }
 
-    //insertion at specific position
-    Node *insert_at_pos(Node *tail, int pos, int data){
+//insertion at specific position
+Node* Node :: insert_at_pos(Node *tail, int pos, int data){
         //first create a node
         Node *new_node = new Node(data);
 
@@ -118,13 +127,13 @@ class Node{
             new_node->next = tail->next;
             tail->next = new_node;
             tail = new_node;
-
             return tail;
         }
+        return tail;
     }
 
-    //to display the list
-    void display(Node *tail){
+
+void Node :: display(Node *tail){
         if(tail == NULL){
             return;
         }
@@ -143,27 +152,39 @@ class Node{
         }while(temp != tail->next);
         cout<<endl;
     }
-};
-
 
 int main(){
-    //create circular linked list
-    Node *head = new Node(10);
-    head->next = new Node(20);
-    head->next->next = new Node(30);
+    // //create circular linked list
+    // Node *head = new Node(10);
+    // head->next = new Node(20);
+    // head->next->next = new Node(30);
 
-    Node *tail = head->next->next;
-    tail->next = head;
-
-    //insertion at head
-    tail = tail->insert_at_head(tail, 22);
-
-    // cout<<"Original list :";
+    // Node *tail = head->next->next;
+    // tail->next = head;
     // tail->display(tail);
 
-    // //insert data at specific positions
-    // int data = 5, pos = 2;
-    // tail = tail->insert_at_pos(tail, pos, data);
-    // cout<<"list after insertions: ";
-    tail->display(tail);
+    // tail = tail->insert_at_head(tail,90); //save the updated head
+    // tail->display(tail);
+
+    // tail = tail->insert_at_tail(tail,100);
+    // tail->display(tail);
+
+    // tail = tail->insert_at_pos(tail,2,80);
+    // tail->display(tail);
+
+    // tail = tail->insert_at_pos(tail,10,50);
+    // tail->display(tail);
+
+    // tail = tail->insert_at_pos(tail,5,120);
+    // tail->display(tail);
+
+    Node *tail_2 = NULL;
+    tail_2 = tail_2->insert_at_pos(tail_2,1,10);
+    tail_2->display(tail_2);
+
+    tail_2 = tail_2->insert_at_pos(tail_2,2,30);
+    tail_2->display(tail_2);
+
+    tail_2 = tail_2->insert_at_pos(tail_2,3,60);
+    tail_2->display(tail_2);
 }
