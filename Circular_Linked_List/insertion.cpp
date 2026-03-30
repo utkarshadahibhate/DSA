@@ -77,10 +77,11 @@ Node* Node :: insert_at_tail(Node *tail, int data){
 //insertion at specific position
 Node* Node :: insert_at_pos(Node *tail, int pos, int data){
         //first create a node
-        Node *new_node = new Node(data);
+        //Node *new_node = new Node(data);
 
         //if head or tail is null i.e. empty list
         if(tail == NULL){
+            Node *new_node = new Node(data);
             tail = new_node; //assigning neww node
             tail->next = tail; //pointing to itself
 
@@ -88,6 +89,7 @@ Node* Node :: insert_at_pos(Node *tail, int pos, int data){
             return tail;
         }
 
+        Node *new_node = new Node(data);
         //for traversing
         //current will point to head initially
         Node *current_node = tail->next;
@@ -123,9 +125,9 @@ Node* Node :: insert_at_pos(Node *tail, int pos, int data){
         current_node->next = new_node;
 
         //update the tail node if the new node is inserted at the end
+        //Note: no need for pointer update for below if condition as it is already
+        //      done above, just assign the new node as tail.
         if(current_node == tail){
-            new_node->next = tail->next;
-            tail->next = new_node;
             tail = new_node;
             return tail;
         }

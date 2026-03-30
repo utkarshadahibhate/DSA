@@ -14,4 +14,26 @@
 
 --Deletion at a specific position
     1)check if the list is empty, if yes return none.
-    2)
+    2)set curr to last ->next (head) and prev to last.
+    3)if the list has only one node (curr == last) and the node's data matches key,
+        delete it by setting last = NULL and return.
+    4)if the head node's data matches key, update last->next to skip the head node
+        and return last.
+    5)otherwise, traverse the list using curr and prev until you either reach back
+        to last or find the node with key.
+    6)if the node with key is found:
+        update prev->next to skip curr.
+        if curr is the last node, update last = prev
+    7)return the updated last.
+
+--Deletion at the tail
+    1)Check if the list is empty(last == NULL). if yes, return NULL.
+    2)set head = last->next
+    3)if the list has only one node (head == last), delete it by setting last = NULL
+        and return.
+    4)Traverse the list using a pointer curr starting from head until 
+        curr->next == last.
+    5)Update curr->next = head to skip the last node.
+    6)Delete the last node and update last = curr.
+    7)return the updated last.
+
