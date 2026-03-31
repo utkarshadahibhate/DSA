@@ -151,11 +151,11 @@ int main(){
 
     tail->display(tail);
 
-    //tail = tail->delete_at_head(tail);
-    //tail->display(tail);
+    tail = tail->delete_at_head(tail);
+    tail->display(tail);
 
-    //tail = tail->delete_at_tail(tail);
-    //tail->display(tail);
+    tail = tail->delete_at_tail(tail);
+    tail->display(tail);
 
     cout<<"\ndelete 40"<<endl;
     tail = tail->delete_specific_node(tail, 40);
@@ -163,6 +163,6 @@ int main(){
 
     cout<<"\ndelete 90"<<endl;
     tail = tail->delete_specific_node(tail, 90);
-    tail->display(tail);
+    //tail->display(tail);
 
 }
