@@ -22,6 +22,9 @@ class Node{
     //to display the list
     void display(Node *tail);
 
+    //to search an element
+    bool search_element(Node *tail,int key);
+
 };
 
 //constructor
@@ -175,6 +178,25 @@ Node* Node :: delete_specific_node(Node *tail, int key){
     }
     return tail;
 }
+
+//to search for an element
+bool Node :: search_element(Node *tail,int key){
+        //node for traversal
+        Node *temp = tail->next;
+
+        if(tail == NULL){
+            cout<<"List is empty"<<endl;
+        }
+
+        do{
+            if(temp->data == key){
+                return true;
+            }
+            temp = temp->next;
+        }while(temp != tail->next); //i.e. again head
+        return false;
+    }
+
 //display list
 void Node :: display(Node *tail){
         if(tail == NULL){
@@ -197,66 +219,31 @@ void Node :: display(Node *tail){
     }
 
     int main(){
-        //create circular linked list
-    // Node *head = new Node(10);
-    // head->next = new Node(20);
-    // head->next->next = new Node(30);
+        Node *head = NULL;
+        Node *tail = NULL;
+        // int choice;
+        // cout<<"Select one option"<<endl;
+        // cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
+        //         \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
+        // cin>>choice;
+        
+        while(true){
+            int choice;
+            cout<<"Select one option"<<endl;
+            cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
+                \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
+            cin>>choice;
 
-    // Node *tail = head->next->next;
-    // tail->next = head;
-    // tail->display(tail);
+            //switch case for above cases
+            switch(choice){
+                //
+                case 1:
+                int nodes, choice_num;
+                cout<<"Give the number of nodes to be added";
+                cin>>nodes;
+                cout<<"Select one \n1)Forward insertion \n2)Backward insertion \n3)";
+                
+            }
 
-    // tail = tail->insert_at_head(tail,90); //save the updated head
-    // tail->display(tail);
-
-    // tail = tail->insert_at_tail(tail,100);
-    // tail->display(tail);
-
-    // tail = tail->insert_at_pos(tail,2,80);
-    // tail->display(tail);
-
-    // tail = tail->insert_at_pos(tail,10,50);
-    // tail->display(tail);
-
-    // tail = tail->insert_at_pos(tail,5,120);
-    // tail->display(tail);
-
-    // Node *tail_2 = NULL;
-    // tail_2 = tail_2->insert_at_pos(tail_2,1,10);
-    // tail_2->display(tail_2);
-
-    // tail_2 = tail_2->insert_at_pos(tail_2,2,30);
-    // tail_2->display(tail_2);
-
-    // tail_2 = tail_2->insert_at_pos(tail_2,3,60);
-    // tail_2->display(tail_2);
-
-    cout<<"\n-------------------------------\n"<<endl;
-
-    Node *head = new Node(10);
-    head->next = new Node(20);
-    head->next->next = new Node(30);
-    head->next->next->next = new Node(40);
-    head->next->next->next->next = new Node(50);
-
-    Node *tail = head->next->next->next->next;
-    tail->next = head;
-
-    tail->display(tail);
-
-    tail = tail->delete_at_head(tail);
-    tail->display(tail);
-
-    tail = tail->delete_at_tail(tail);
-    tail->display(tail);
-
-    cout<<"\ndelete 40"<<endl;
-    tail = tail->delete_specific_node(tail, 40);
-    tail->display(tail);
-
-    cout<<"\ndelete 90"<<endl;
-    tail = tail->delete_specific_node(tail, 90);
-    //tail->display(tail);
-
-        return 0;
+        }
     }
