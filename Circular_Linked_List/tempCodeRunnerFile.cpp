@@ -1,2 +1,13 @@
-    tail_2 = tail_2->insert_at_pos(tail_2,2,30);
-    tail_2->display(tail_2);
+           // case 4:
+            // cout<<"\nGive an element to be searched : ";
+            // cin>>ele;
+            // bool result = tail->search_element(tail,ele);
+            // if(result){
+            //     cout<<"Key found : "<<ele<<endl;
+            // }
+            // else{
+            //     cout<<"Not found"<<endl;
+            // }
+            // tail->display(tail);
+            // cout<<endl;
+            // break;

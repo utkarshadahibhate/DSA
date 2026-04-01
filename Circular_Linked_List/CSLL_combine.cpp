@@ -195,7 +195,7 @@ bool Node :: search_element(Node *tail,int key){
             temp = temp->next;
         }while(temp != tail->next); //i.e. again head
         return false;
-    }
+}
 
 //display list
 void Node :: display(Node *tail){
@@ -216,126 +216,138 @@ void Node :: display(Node *tail){
             }
         }while(temp != tail->next);
         cout<<endl;
-    }
+}
 
-    int main(){
-        Node *head = NULL;
-        Node *tail = NULL;
-        // int choice;
-        // cout<<"Select one option"<<endl;
-        // cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
-        //         \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
-        // cin>>choice;
-        
-        while(true){
-            int choice;
-            cout<<"Select one option"<<endl;
-            cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
-                \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
-            cin>>choice;
+int main(){
+    Node *head = NULL;
+    Node *tail = NULL;
+    // int choice;
+    // cout<<"Select one option"<<endl;
+    // cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
+    //         \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
+    // cin>>choice;
+    bool exit = false;
+    while(!exit){
+        int choice;
+        cout<<"Select one option"<<endl;
+        cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
+            \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
+        cin>>choice;
 
-            //switch case for above cases
-            switch(choice){
-                //to create CSLL
-                case 1:
-                int nodes, choice_num, ele;
-                cout<<"Give the number of nodes to be added";
-                cin>>nodes;
-                cout<<"Select one \n1)Forward insertion \n2)Backward insertion"<<endl;
-                cin>>choice_num;
-                for(int i = 1; i <= nodes; i++){
-                    cout<<"enter element "<<i<<" : ";
-                    cin>>ele;
-                    if(choice_num == 1){
-                        tail = tail->insert_at_head(tail,ele);
-                    }
-                    else if(choice_num == 2){
-                        tail = tail->insert_at_tail(tail,ele);
-                    }
-                    else{
-                        cout<<"Invalid choice"<<endl;
-                    }
-                }
-                tail->display(tail);
-                break;
-
-                //insertion operations
-                case 2:
-                int pos;
-                cout<<"Select one \n1)Insert at head \n2)Insert at tail \
-                    \n3)Insert at specific position"<<endl;
-                cin>>choice_num;
-                cout<<"Give an element to be added : ";
+        //switch case for above cases
+        switch(choice){
+            //to create CSLL
+            case 1:
+            int nodes, choice_num, ele;
+            cout<<"Give the number of nodes to be added : ";
+            cin>>nodes;
+            cout<<"Select one \n1)Forward insertion \n2)Backward insertion"<<endl;
+            cin>>choice_num;
+            for(int i = 1; i <= nodes; i++){
+                cout<<"enter element "<<i<<" : ";
                 cin>>ele;
                 if(choice_num == 1){
                     tail = tail->insert_at_head(tail,ele);
                 }
                 else if(choice_num == 2){
-                    tail = tail->insert_at_tail(tail, ele);
-                }
-                else if(choice_num == 3){
-                    cout<<"Give a position number : ";
-                    cin>>pos;
-                    tail = tail->insert_at_pos(tail,pos,ele);
+                    tail = tail->insert_at_tail(tail,ele);
                 }
                 else{
                     cout<<"Invalid choice"<<endl;
                 }
-                tail->display(tail);
-                break;
-
-                //deletion operation
-                case 3:
-                cout<<"Select one \n1)Delete at beginning \n2)Delete at end \
-                \n3)Delete the key"<<endl;
-                cin>>choice_num;
-                if(choice_num == 1){
-                    tail = tail->delete_at_head(tail);
-                }
-                else if(choice_num == 2){
-                    tail = tail->delete_at_tail(tail);
-                }
-                else if(choice_num == 3){
-                    cout<<"Give an element to be deleted : ";
-                    cin>>ele;
-                    tail = tail->delete_specific_node(tail,ele);
-                }
-                else{
-                    cout<<"Invalid choice"<<endl;
-                }
-                tail->display(tail);
-                break;
-
-                //search an element
-                case 4:
-                cout<<"Give an element to be searched : ";
-                cin>>ele;
-                bool result = tail->search_element(tail,ele);
-                if(result){
-                    cout<<"Key found : "<<ele<<endl;
-                }
-                else{
-                    cout<<"Not found"<<endl;
-                }
-                tail->display(tail);
-                break;
-
-                //to display
-                case 5:
-                tail->display(tail);
-                break;
-
-                //exit case
-                case 6:
-                goto exit_loop;
-
-                //default case
-                default:
-                cout<<"\nInvalid input, please try again !"<<endl;
-                break;
             }
+            cout<<"Displaying your result"<<endl;
+            tail->display(tail);
             cout<<endl;
+            break;
+
+            //insertion operations
+            case 2:
+            int pos;
+            cout<<"\nSelect one \n1)Insert at head \n2)Insert at tail \
+                \n3)Insert at specific position"<<endl;
+            cin>>choice_num;
+            cout<<"\nGive an element to be added : ";
+            cin>>ele;
+            if(choice_num == 1){
+                tail = tail->insert_at_head(tail,ele);
+            }
+            else if(choice_num == 2){
+                tail = tail->insert_at_tail(tail, ele);
+            }
+            else if(choice_num == 3){
+                cout<<"\nGive a position number : ";
+                cin>>pos;
+                tail = tail->insert_at_pos(tail,pos,ele);
+            }
+            else{
+                cout<<"Invalid choice"<<endl;
+            }
+            cout<<"Displaying your result"<<endl;
+            tail->display(tail);
+            cout<<endl;
+            break;
+
+            //deletion operation
+            case 3:
+            cout<<"\nSelect one \n1)Delete at beginning \n2)Delete at end \
+            \n3)Delete the key"<<endl;
+            cin>>choice_num;
+            if(choice_num == 1){
+                tail = tail->delete_at_head(tail);
+            }
+            else if(choice_num == 2){
+                tail = tail->delete_at_tail(tail);
+            }
+            else if(choice_num == 3){
+                cout<<"\nGive an element to be deleted : ";
+                cin>>ele;
+                tail = tail->delete_specific_node(tail,ele);
+            }
+            else{
+                cout<<"Invalid choice"<<endl;
+            }
+            cout<<"Displaying your result"<<endl;
+            tail->display(tail);
+            cout<<endl;
+            break;
+
+            //search an element
+            case 4:
+            cout<<"\nGive an element to be searched : ";
+            cin>>ele;
+            bool result = tail->search_element(tail,ele);
+            if(result){
+                cout<<"Key found : "<<ele<<endl;
+            }
+            else{
+                cout<<"Not found"<<endl;
+            }
+            tail->display(tail);
+            cout<<endl;
+            break;
+
+            //to display
+            case 5:
+            tail->display(tail);
+            break;
+
+//             //exit case
+//             case 6:
+//             if(choice == 6){
+//                 break;
+//             }
+//             break;
+
+//             //default case
+//             default:
+//             cout<<"\nInvalid input, please try again !"<<endl;
+//             break;
+//         }
+//         cout<<endl;
+//         }
+//     cout<<"Exited the loop........"<<endl;
         }
-        exit_loop;
-        cout<<"Exited the loop........"<<endl;
+
     }
+}
