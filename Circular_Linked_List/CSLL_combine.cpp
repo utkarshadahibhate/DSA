@@ -247,9 +247,13 @@ int main(){
                 cout<<"enter element "<<i<<" : ";
                 cin>>ele;
                 if(choice_num == 1){
+                    cout<<"enter element "<<i<<" : ";
+                    cin>>ele;
                     tail = tail->insert_at_head(tail,ele);
                 }
                 else if(choice_num == 2){
+                    cout<<"enter element "<<i<<" : ";
+                    cin>>ele;
                     tail = tail->insert_at_tail(tail,ele);
                 }
                 else{
