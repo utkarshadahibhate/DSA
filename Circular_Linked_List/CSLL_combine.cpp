@@ -221,14 +221,13 @@ void Node :: display(Node *tail){
 int main(){
     Node *head = NULL;
     Node *tail = NULL;
-    // int choice;
+    int choice;
     // cout<<"Select one option"<<endl;
     // cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
     //         \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
     // cin>>choice;
-    bool exit = false;
-    while(!exit){
-        int choice;
+    //bool exit = false;
+    while(true){
         cout<<"Select one option"<<endl;
         cout<<"1)Create a CSLL \n2)Inserting an element \n3)Deleting an element \
             \n4)Search an element \n5)Display CSLL \n6)Exit....."<<endl;
@@ -239,6 +238,7 @@ int main(){
             //to create CSLL
             case 1:
             int nodes, choice_num, ele;
+            bool result;
             cout<<"Give the number of nodes to be added : ";
             cin>>nodes;
             cout<<"Select one \n1)Forward insertion \n2)Backward insertion"<<endl;
@@ -316,7 +316,7 @@ int main(){
             case 4:
             cout<<"\nGive an element to be searched : ";
             cin>>ele;
-            bool result = tail->search_element(tail,ele);
+            result = tail->search_element(tail,ele);
             if(result){
                 cout<<"Key found : "<<ele<<endl;
             }
@@ -332,22 +332,19 @@ int main(){
             tail->display(tail);
             break;
 
-//             //exit case
-//             case 6:
-//             if(choice == 6){
-//                 break;
-//             }
-//             break;
+            //exit case
+            case 6:
+            goto exit_loop;
+        
 
-//             //default case
-//             default:
-//             cout<<"\nInvalid input, please try again !"<<endl;
-//             break;
-//         }
-//         cout<<endl;
-//         }
-//     cout<<"Exited the loop........"<<endl;
+            //default case
+            default:
+            cout<<"\nInvalid input, please try again !"<<endl;
+            break;
         }
-
+        cout<<endl;
     }
+    exit_loop:
+    cout<<"Exited the loop........"<<endl;
+
 }
