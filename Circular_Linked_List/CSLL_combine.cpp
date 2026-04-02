@@ -243,26 +243,35 @@ int main(){
             cin>>nodes;
             cout<<"Select one \n1)Forward insertion \n2)Backward insertion"<<endl;
             cin>>choice_num;
+            if(choice_num == 1){
+
+                
             for(int i = 1; i <= nodes; i++){
-                cout<<"enter element "<<i<<" : ";
-                cin>>ele;
-                if(choice_num == 1){
                     cout<<"enter element "<<i<<" : ";
                     cin>>ele;
                     tail = tail->insert_at_head(tail,ele);
                 }
+
+                  cout<<"Displaying your result"<<endl;
+            tail->display(tail);
+            cout<<endl;
+            }
                 else if(choice_num == 2){
+                    
+            for(int i = 1; i <= nodes; i++){
                     cout<<"enter element "<<i<<" : ";
                     cin>>ele;
                     tail = tail->insert_at_tail(tail,ele);
                 }
+                  cout<<"Displaying your result"<<endl;
+            tail->display(tail);
+            cout<<endl;
+            }
                 else{
                     cout<<"Invalid choice"<<endl;
                 }
-            }
-            cout<<"Displaying your result"<<endl;
-            tail->display(tail);
-            cout<<endl;
+            
+          
             break;
 
             //insertion operations
@@ -283,14 +292,15 @@ int main(){
                 cout<<"\nGive a position number : ";
                 cin>>pos;
                 tail = tail->insert_at_pos(tail,pos,ele);
+                cout<<"Displaying your result"<<endl;
+            tail->display(tail);
+            cout<<endl;
+            break;
             }
             else{
                 cout<<"Invalid choice"<<endl;
             }
-            cout<<"Displaying your result"<<endl;
-            tail->display(tail);
-            cout<<endl;
-            break;
+            
 
             //deletion operation
             case 3:
