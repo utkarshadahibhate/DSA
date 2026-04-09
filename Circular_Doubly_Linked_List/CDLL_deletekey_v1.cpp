@@ -14,8 +14,8 @@ class Node{
         this->prev = NULL;
     }
 
-    //to delete at a specific position
-    Node *delete_at_pos(Node *head, int pos){
+    //delete the key
+    Node *delete_key(Node *head, int key){
         //storing head in temp for deletion
         Node *temp = head;
 
@@ -25,39 +25,44 @@ class Node{
             return NULL;
         }
 
-        if(pos == 1){
+        //if key is at head node
+        if(head->data == key){
+            //update the head node pointers
             head->prev->next = head->next;
             head->next->prev = head->prev;
+            //update head node
             head = head->next;
+            //delete the previous head node
             delete temp;
+            //return updated head node
             return head;
         }
 
-        //traverse to the position
+        //traverse till the key
         Node *current_node = head;
         Node *previous_node = NULL;
-        for(int i = 1; i < pos; i++){
-            previous_node = current_node; //will have pos-1 node
-            current_node = current_node->next; //will terminate at pos node
+        while(current_node->data != key){
+            previous_node = current_node;
+            current_node = current_node->next;
 
             if(current_node == head){
-                cout<<"Position out of bound"<<endl;
+                cout<<"key not found"<<endl;
                 return head;
             }
         }
-        //after reaching the pos node
-        //update the previous node's pointer
+        //after the key is found, delete the node
+        //update previous node's pointer
         previous_node->next = current_node->next;
-        //update current node's next node's pointer
+        //update current_node's pointers
         current_node->next->prev = current_node->prev;
-        //deleting current node
+        //deleting the current node
         delete current_node;
         //return updated head
         return head;
     }
 
     //to display list
-        void display(Node *head){
+    void display(Node *head){
         Node *temp = head;
 
         if(head == NULL){
@@ -87,6 +92,6 @@ int main(){
 
     head->display(head);
 
-    head = head->delete_at_pos(head,3);
+    head = head->delete_key(head,10);
     head->display(head);
 }
