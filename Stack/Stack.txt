@@ -1,0 +1,51 @@
+A stack is a linear data structure that follows the last in first out(LIFO) or
+First in last out(FILO) principle.
+It can be implemented using an array by treating the end of the array as the
+top of the stack.
+
+A stack can be impelented using an array where we maintain:
+    1)An integer array to store elements.
+    2)A variable capacity to represent the maximum size of the stack.
+    3)A variable top to track the index of the top element. Initially, top = -1
+        indicate an empty stack.
+
+Operations on stack:
+    1)Push operation - Adds an item to stack.
+    2)Pop operation - removes an item from the stack.
+    3)Top/Peak operation - returns the top element of the stack.
+    4)isEmpty operation - returns true if the stack is empty, else false.
+    5)isFull operation - returns true if the stcak is full, else false.
+
+Push operation :
+Adds an element to the stack, if the stack is full, then it is said to be
+an overflow condition.
+    1)Before pushing the element to the stack, we check if the stack is full.
+    2)If the stack is full(capacity - 1), then the stack overflows and we cannot
+        insert the element to the stack.
+    3)Otherwise we increment the value of top by 1 (top = top + 1) and the new 
+        value is inserted at the top position.
+    4)The elements can be pushed into the stack till we reach the capacity of the
+        stack.
+
+Pop operation :
+Removes an item from the stack. The items are poped in the reverse order in which
+they are pushed.
+If the stack is empty, then it is said to be underflow  condition.
+    1)Before poping the element from the stack, we check if the stack is empty.
+    2)If the stack is empty(top == -1), then the stack underflows and we cannot
+        remove any element from the stack.
+    3)Otherwise we store the value at top, decrement the value of top by 1
+        (top = top - 1) and return the stored top value.
+
+Top/Peak operation :
+Return the top element of the stack.
+    1)Before returning the top element from the stack, we check if the stack is
+        empty.
+    2)If the stack is empty (top == -1), we simply print stack is empty.
+    3)Otherwise, we return the element stored at index = top.
+
+isEmpty operation :
+Returns true if the stack is empty, else false.
+    1)Check for the value of top in stack.
+    2)if(top == -1), then the stack is empty so return true.
+    3)Otherwise, the stack is not empty so return false.
