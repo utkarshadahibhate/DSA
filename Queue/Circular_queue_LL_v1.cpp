@@ -98,6 +98,7 @@ int rear(Queue *Q){
 //function to display queue elements
 void display(Queue *Q){
     Node *temp = Q->front;
+    cout<<"Queue elements are: "<<endl;
 
     do{
         cout<<temp->data<<" ";
@@ -121,4 +122,18 @@ int main(){
 
     display(Q1);
 
+    cout<<"front element is : "<<front(Q1)<<endl;
+    cout<<"Rear element is : "<<rear(Q1)<<endl;
+
+    dequeue(Q1);
+    dequeue(Q1);
+
+    cout<<"After Dqueue operation :"<<endl;
+
+    display(Q1);
+
+    cout<<"front element is : "<<front(Q1)<<endl;
+    cout<<"Rear element is : "<<rear(Q1)<<endl;
+
+    
 }
